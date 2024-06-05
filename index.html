@@ -1,0 +1,86 @@
+<html>
+<head>
+	<title> Rating Application by Sanskar </title>
+	<style>
+		* { font-size : 50px ; }
+		body { background-color : #FF7733 ; }
+	</style>
+</head>
+<body>
+<center>
+	<h1> Rating Application </h1>
+	<form onsubmit = "find()">
+		<input type = "number" placeholder = "Enter number" id = "rating" />
+		<br> <br>
+		<input type = "submit" value = "M1" />
+		<input type = "submit" value = "M2" />
+		<input type = "submit" value = "M3" />
+	</form>
+	<h2 id = "msg"> </h2>
+	<script>
+		function find()
+		{
+			event.preventDefault();
+			let rating = document.getElementById("rating");
+			let msg = document.getElementById("msg");
+			let ele = document.activeElement.value;
+
+			if (rating.value == "")
+			{
+				alert("Please enter rating");
+				msg.innerHTML = "";
+				rating.focus();
+				return;
+			}
+			let r = parseInt(rating.value);		
+			let ans = "";
+			if ((r < 1) || (r > 5))
+			{
+				alert("Enter Rating between 1 to 5");
+				msg.innerHTML = "" ;	
+				rating.value = ""; 
+				rating.focus();
+				return ; 
+	
+			}
+			if (ele == "M1")
+			{
+				if (r == 1)	ans = "Poor" ; 
+				else if (r == 2)  ans = "Ok";
+				else if (r == 3)  ans = "Ok";
+				else if (r == 4)  ans = "Wow";
+				else if (r == 5)  ans = "Wow";
+				msg.innerHTML = "Method 1 --> " + ans ; 
+
+			} 
+			else if (ele == "M2")
+			{
+				if (r == 1) 				ans = "Poor" ;
+				else if ((r == 2) || (r == 3))	ans = "Ok";
+				else if ((r == 4) || (r == 5)) 	ans = "Wow";
+		
+				msg.innerHTML = "Method 2 --> " + ans ; 
+
+			}
+
+			else if (ele == "M3")
+			{
+				switch(r)
+				{
+					case 1 : 	ans = "Poor" ; break ; 
+					case 2 : 	ans = "Ok" ; break ; 
+					case 3 : 	ans = "Ok" ; break ; 
+					case 4 : 	ans = "Wow" ; break ; 
+					case 5 : 	ans = "Wow" ; break ; 
+
+				}
+				msg.innerHTML = "Method 3 --> "  + ans ; 
+
+			}
+
+		}
+
+	</script>
+</center>
+</body>
+</html>
